@@ -3,6 +3,7 @@ package com.tanglie1993.jazzylistview;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.ScaleAnimation;
 import android.view.animation.TranslateAnimation;
@@ -75,10 +76,11 @@ public class JazzyListView extends ListView {
             return;
         }
         System.out.println("animateItem: " + position);
-        ScaleAnimation animation = new ScaleAnimation(0, 1, 0, 1);
+        ScaleAnimation animation = new ScaleAnimation(0, 1, 0, 1,
+                view.getMeasuredWidth() / 2, view.getMeasuredHeight() / 2);
         animation.setDuration(1000);
         animation.setFillAfter(false);
-        animation.setInterpolator(new AccelerateInterpolator());
+        animation.setInterpolator(new AccelerateDecelerateInterpolator());
         view.startAnimation(animation);
     }
 
