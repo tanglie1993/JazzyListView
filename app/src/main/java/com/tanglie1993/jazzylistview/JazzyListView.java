@@ -17,7 +17,7 @@ import android.widget.ListView;
 
 public class JazzyListView extends ListView {
 
-    private ListAdapter adapter;
+    private ListItemAnimator listItemAnimator = new GrowItemAnimator();
 
     private int firstVisibleItem;
     private int lastVisibleItem;
@@ -55,12 +55,12 @@ public class JazzyListView extends ListView {
                 int lastVisibleItem = firstVisibleItem + visibleItemCount - 1;
                 if(JazzyListView.this.firstVisibleItem > firstVisibleItem){
                     for(int i = firstVisibleItem; i < JazzyListView.this.firstVisibleItem; i++){
-                        animateItem(i - firstVisibleItem);
+                        listItemAnimator.animateItem(getChildAt(i - firstVisibleItem));
                     }
                 }
                 if(JazzyListView.this.lastVisibleItem < lastVisibleItem){
                     for(int i = JazzyListView.this.lastVisibleItem; i < lastVisibleItem; i++){
-                        animateItem(visibleItemCount - 1 - (i - JazzyListView.this.lastVisibleItem));
+                        listItemAnimator.animateItem(getChildAt(visibleItemCount - 1 - (i - JazzyListView.this.lastVisibleItem)));
                     }
                 }
 
@@ -68,25 +68,5 @@ public class JazzyListView extends ListView {
                 JazzyListView.this.lastVisibleItem = lastVisibleItem;
             }
         });
-    }
-
-    private void animateItem(int position) {
-        View view = getChildAt(position);
-        if(view == null){
-            return;
-        }
-        System.out.println("animateItem: " + position);
-        ScaleAnimation animation = new ScaleAnimation(0, 1, 0, 1,
-                view.getMeasuredWidth() / 2, view.getMeasuredHeight() / 2);
-        animation.setDuration(1000);
-        animation.setFillAfter(false);
-        animation.setInterpolator(new AccelerateDecelerateInterpolator());
-        view.startAnimation(animation);
-    }
-
-    @Override
-    public void setAdapter(ListAdapter adapter){
-        super.setAdapter(adapter);
-        this.adapter = adapter;
     }
 }
