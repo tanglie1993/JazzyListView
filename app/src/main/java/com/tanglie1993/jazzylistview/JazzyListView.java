@@ -50,12 +50,17 @@ public class JazzyListView extends ListView {
 
             @Override
             public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+                System.out.println("firstVisibleItem: " + firstVisibleItem);
                 int lastVisibleItem = firstVisibleItem + visibleItemCount - 1;
                 if(JazzyListView.this.firstVisibleItem > firstVisibleItem){
-                    animateItem(0);
+                    for(int i = firstVisibleItem; i < JazzyListView.this.firstVisibleItem; i++){
+                        animateItem(i - firstVisibleItem);
+                    }
                 }
                 if(JazzyListView.this.lastVisibleItem < lastVisibleItem){
-                    animateItem(visibleItemCount - 1);
+                    for(int i = JazzyListView.this.lastVisibleItem; i < lastVisibleItem; i++){
+                        animateItem(visibleItemCount - 1 - (i - JazzyListView.this.lastVisibleItem));
+                    }
                 }
 
                 JazzyListView.this.firstVisibleItem = firstVisibleItem;
