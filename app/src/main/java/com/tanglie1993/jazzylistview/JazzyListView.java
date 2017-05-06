@@ -50,6 +50,7 @@ public class JazzyListView extends ListView {
 
     @Override
     public void setAdapter(ListAdapter adapter){
+        super.setAdapter(adapter);
         this.adapter = adapter;
     }
 }
