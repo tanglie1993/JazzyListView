@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
+import android.view.animation.ScaleAnimation;
 import android.view.animation.TranslateAnimation;
 import android.widget.AbsListView;
 import android.widget.ListAdapter;
@@ -69,7 +70,7 @@ public class JazzyListView extends ListView {
             return;
         }
         System.out.println("animateItem: " + position);
-        TranslateAnimation animation = new TranslateAnimation(0, 200, 0, 0);
+        ScaleAnimation animation = new ScaleAnimation(0, 1, 0, 1);
         animation.setDuration(1000);
         animation.setFillAfter(false);
         animation.setInterpolator(new AccelerateInterpolator());
