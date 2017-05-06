@@ -10,15 +10,25 @@ import android.view.animation.Transformation;
 
 class CardAnimation extends Animation {
 
+    private int height = 0;
+    private int width = 0;
+
     @Override
     public void initialize(int width, int height, int parentWidth, int parentHeight) {
         super.initialize(width, height, parentWidth, parentHeight);
+        this.height = height;
+        this.width = width;
     }
 
     @Override
     protected void applyTransformation(float interpolatedTime, Transformation t) {
         Matrix matrix = new Matrix();
-        float[] values = {interpolatedTime, 0, 0, 0, interpolatedTime, 0, 0, 0, 1};
+        float v1 = (float) (0.4 * interpolatedTime + 0.6);
+        float v3 = (float) 0.2 * width * (1 - interpolatedTime);
+        float v5 = interpolatedTime;
+        float v6 = (float) 0.8 * height * (1 - interpolatedTime);
+        float v9 = 1;
+        float[] values = {v1, 0, v3, 0, v5, v6, 0, 0, v9};
         matrix.setValues(values);
         t.getMatrix().preConcat(matrix);
     }
