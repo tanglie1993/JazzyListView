@@ -8,19 +8,16 @@ import android.view.animation.ScaleAnimation;
  * Created by Administrator on 2017/5/6 0006.
  */
 
-public class GrowItemAnimator implements ListItemAnimator {
+public class CardItemAnimator implements ListItemAnimator {
     @Override
     public void animateItem(View view) {
         if(view == null){
             return;
         }
-        ScaleAnimation animation = new ScaleAnimation(0, 1, 0, 1,
-                view.getMeasuredWidth() / 2, view.getMeasuredHeight() / 2);
+        CardAnimation animation = new CardAnimation();
         animation.setDuration(1000);
         animation.setFillAfter(false);
         animation.setInterpolator(new AccelerateDecelerateInterpolator());
         view.startAnimation(animation);
     }
-
-
 }
