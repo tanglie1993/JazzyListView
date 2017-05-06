@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
                 View view = getLayoutInflater().inflate(R.layout.list_item_layout, parent, false);
-                ((TextView) view.findViewById(R.id.title)).setText("title");
+                ((TextView) view.findViewById(R.id.title)).setText("" + position);
                 return view;
             }
         });
