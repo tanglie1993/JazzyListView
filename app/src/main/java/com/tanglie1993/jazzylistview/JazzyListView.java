@@ -17,7 +17,7 @@ import android.widget.ListView;
 
 public class JazzyListView extends ListView {
 
-    private ListItemAnimator listItemAnimator = new CurlItemAnimator();
+    private ListItemAnimator listItemAnimator = new WaveItemAnimator();
 
     private int firstVisibleItem;
     private int lastVisibleItem;
