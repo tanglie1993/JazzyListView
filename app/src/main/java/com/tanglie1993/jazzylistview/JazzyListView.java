@@ -23,6 +23,10 @@ public class JazzyListView extends ListView {
     private int firstVisibleItem;
     private int lastVisibleItem;
 
+    private boolean hasBegunAnimation = false; // 在首次有item滚出或滚入屏幕时才开始展示动画。避免载入页面时同时展示太多动画。
+    private int initialFirstVisibleItem = -1;
+    private int initialLastVisibleItem = -1;
+
     public JazzyListView(Context context) {
         super(context);
         init();
@@ -52,14 +56,23 @@ public class JazzyListView extends ListView {
 
             @Override
             public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-                System.out.println("firstVisibleItem: " + firstVisibleItem);
                 int lastVisibleItem = firstVisibleItem + visibleItemCount - 1;
-                if(JazzyListView.this.firstVisibleItem > firstVisibleItem){
+                if(initialFirstVisibleItem == -1){
+                    initialFirstVisibleItem = firstVisibleItem;
+                }else if(firstVisibleItem != initialFirstVisibleItem){
+                    hasBegunAnimation = true;
+                }
+                if(initialLastVisibleItem == -1){
+                    initialLastVisibleItem = lastVisibleItem;
+                }else if(lastVisibleItem != initialLastVisibleItem){
+                    hasBegunAnimation = true;
+                }
+                if(JazzyListView.this.firstVisibleItem > firstVisibleItem && hasBegunAnimation){
                     for(int i = firstVisibleItem; i < JazzyListView.this.firstVisibleItem; i++){
                         listItemAnimator.animateItem(getChildAt(i - firstVisibleItem), ListItemAnimator.ABOVE);
                     }
                 }
-                if(JazzyListView.this.lastVisibleItem < lastVisibleItem){
+                if(JazzyListView.this.lastVisibleItem < lastVisibleItem && hasBegunAnimation){
                     for(int i = JazzyListView.this.lastVisibleItem; i < lastVisibleItem; i++){
                         listItemAnimator.animateItem(getChildAt(visibleItemCount - 1 - (i - JazzyListView.this.lastVisibleItem)), ListItemAnimator.BELOW);
                     }

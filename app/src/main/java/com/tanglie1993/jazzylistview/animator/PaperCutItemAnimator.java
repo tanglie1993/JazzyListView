@@ -44,9 +44,9 @@ public class PaperCutItemAnimator implements ListItemAnimator {
         @Override
         protected void applyTransformation(float interpolatedTime, Transformation t) {
             if(direction == BELOW){
-                t.getMatrix().postSkew(0, (float) (0.3 - 0.3 * interpolatedTime));
+                t.getMatrix().postSkew(0, (float) (0.4 - 0.4 * interpolatedTime));
             }else{
-                t.getMatrix().postSkew(0, (float) (0.3 * interpolatedTime - 0.3));
+                t.getMatrix().postSkew(0, (float) (0.4 * interpolatedTime - 0.4));
             }
 
         }
