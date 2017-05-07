@@ -55,12 +55,12 @@ public class JazzyListView extends ListView {
                 int lastVisibleItem = firstVisibleItem + visibleItemCount - 1;
                 if(JazzyListView.this.firstVisibleItem > firstVisibleItem){
                     for(int i = firstVisibleItem; i < JazzyListView.this.firstVisibleItem; i++){
-                        listItemAnimator.animateItem(getChildAt(i - firstVisibleItem));
+                        listItemAnimator.animateItem(getChildAt(i - firstVisibleItem), ListItemAnimator.ABOVE);
                     }
                 }
                 if(JazzyListView.this.lastVisibleItem < lastVisibleItem){
                     for(int i = JazzyListView.this.lastVisibleItem; i < lastVisibleItem; i++){
-                        listItemAnimator.animateItem(getChildAt(visibleItemCount - 1 - (i - JazzyListView.this.lastVisibleItem)));
+                        listItemAnimator.animateItem(getChildAt(visibleItemCount - 1 - (i - JazzyListView.this.lastVisibleItem)), ListItemAnimator.BELOW);
                     }
                 }
 

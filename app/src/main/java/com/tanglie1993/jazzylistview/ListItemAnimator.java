@@ -8,7 +8,10 @@ import android.view.View;
 
 public interface ListItemAnimator {
 
-    int ANIMATION_DURATION = 8000;
+    int ANIMATION_DURATION = 500;
 
-    void animateItem(View view);
+    int ABOVE = 1;
+    int BELOW = 2;
+
+    void animateItem(View view, int direction);
 }

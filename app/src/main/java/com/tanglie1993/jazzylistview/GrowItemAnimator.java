@@ -10,7 +10,7 @@ import android.view.animation.ScaleAnimation;
 
 public class GrowItemAnimator implements ListItemAnimator {
     @Override
-    public void animateItem(View view) {
+    public void animateItem(View view, int direction) {
         if(view == null){
             return;
         }
