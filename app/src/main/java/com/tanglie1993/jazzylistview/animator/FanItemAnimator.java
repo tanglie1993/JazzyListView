@@ -23,7 +23,6 @@ public class FanItemAnimator implements ListItemAnimator {
             public void onAnimationUpdate(ValueAnimator animation) {
                 float animatedValue = (Float) animation.getAnimatedValue();
                 view.setPivotX(0);
-
                 if(direction == ABOVE){
                     view.setPivotY(view.getMeasuredHeight());
                     view.setRotation(90 * (animatedValue - 1));

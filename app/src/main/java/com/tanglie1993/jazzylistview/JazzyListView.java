@@ -8,6 +8,7 @@ import android.widget.ListView;
 import com.tanglie1993.jazzylistview.animator.FanItemAnimator;
 import com.tanglie1993.jazzylistview.animator.HelixItemAnimator;
 import com.tanglie1993.jazzylistview.animator.ListItemAnimator;
+import com.tanglie1993.jazzylistview.animator.PaperCutItemAnimator;
 import com.tanglie1993.jazzylistview.animator.ReverseFlyItemAnimator;
 
 /**
@@ -16,7 +17,7 @@ import com.tanglie1993.jazzylistview.animator.ReverseFlyItemAnimator;
 
 public class JazzyListView extends ListView {
 
-    private ListItemAnimator listItemAnimator = new FanItemAnimator();
+    private ListItemAnimator listItemAnimator = new PaperCutItemAnimator();
 
     private int firstVisibleItem;
     private int lastVisibleItem;
