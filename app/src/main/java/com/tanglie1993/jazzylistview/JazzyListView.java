@@ -10,6 +10,7 @@ import com.tanglie1993.jazzylistview.animator.HelixItemAnimator;
 import com.tanglie1993.jazzylistview.animator.ListItemAnimator;
 import com.tanglie1993.jazzylistview.animator.PaperCutItemAnimator;
 import com.tanglie1993.jazzylistview.animator.ReverseFlyItemAnimator;
+import com.tanglie1993.jazzylistview.animator.TwirlItemAnimator;
 
 /**
  * Created by Administrator on 2017/5/6 0006.
@@ -17,7 +18,7 @@ import com.tanglie1993.jazzylistview.animator.ReverseFlyItemAnimator;
 
 public class JazzyListView extends ListView {
 
-    private ListItemAnimator listItemAnimator = new PaperCutItemAnimator();
+    private ListItemAnimator listItemAnimator = new TwirlItemAnimator();
 
     private int firstVisibleItem;
     private int lastVisibleItem;
