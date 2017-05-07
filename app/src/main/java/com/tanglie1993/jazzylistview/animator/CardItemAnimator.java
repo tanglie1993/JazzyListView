@@ -2,6 +2,8 @@ package com.tanglie1993.jazzylistview.animator;
 
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 
@@ -10,6 +12,7 @@ import android.view.animation.AccelerateDecelerateInterpolator;
  */
 
 public class CardItemAnimator implements ListItemAnimator {
+
     @Override
     public void animateItem(final View view, final int direction) {
         if(view == null){

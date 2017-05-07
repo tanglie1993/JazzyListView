@@ -1,5 +1,7 @@
 package com.tanglie1993.jazzylistview.animator;
 
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.view.View;
 
 /**

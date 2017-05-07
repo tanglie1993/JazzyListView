@@ -70,4 +70,8 @@ public class JazzyListView extends ListView {
             }
         });
     }
+
+    public void setListItemAnimator(ListItemAnimator listItemAnimator) {
+        this.listItemAnimator = listItemAnimator;
+    }
 }

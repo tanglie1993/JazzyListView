@@ -1,15 +1,17 @@
 package com.tanglie1993.jazzylistview;
 
-import android.os.StrictMode;
+import android.animation.Animator;
+import android.content.Intent;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.ListViewCompat;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.tanglie1993.jazzylistview.R;
 import com.tanglie1993.jazzylistview.animator.CardItemAnimator;
 import com.tanglie1993.jazzylistview.animator.CurlItemAnimator;
 import com.tanglie1993.jazzylistview.animator.FanItemAnimator;
@@ -23,18 +25,19 @@ import com.tanglie1993.jazzylistview.animator.ReverseFlyItemAnimator;
 import com.tanglie1993.jazzylistview.animator.TwirlItemAnimator;
 import com.tanglie1993.jazzylistview.animator.WaveItemAnimator;
 
-public class MainActivity extends AppCompatActivity {
+public class LauncherActivity extends AppCompatActivity {
+
+    public static String[] titles = {"Card", "Curl", "Fan", "Flip", "Fly", "Grow", "Helix","PaperCut", "ReverseFly", "Twirl", "Wave"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        JazzyListView listView = (JazzyListView) findViewById(R.id.jazzyListView);
-        listView.setListItemAnimator(getAnimator(getIntent().getExtras().getInt("type")));
+        setContentView(R.layout.activity_launcher);
+        ListView listView = (ListView) findViewById(R.id.listView);
         listView.setAdapter(new BaseAdapter() {
             @Override
             public int getCount() {
-                return 30;
+                return titles.length;
             }
 
             @Override
@@ -48,41 +51,21 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public View getView(int position, View convertView, ViewGroup parent) {
+            public View getView(final int position, View convertView, ViewGroup parent) {
                 View view = getLayoutInflater().inflate(R.layout.list_item_layout, parent, false);
-                ((TextView) view.findViewById(R.id.title)).setText(String.format("%d %d %d %d %d %d",
-                        position, position, position, position, position, position));
+                ((TextView) view.findViewById(R.id.title)).setText(titles[position]);
+                view.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(LauncherActivity.this, MainActivity.class);
+                        intent.putExtra("type", position);
+                        startActivity(intent);
+                    }
+                });
                 return view;
             }
         });
     }
 
-    private ListItemAnimator getAnimator(int position) {
-        switch(position){
-            case 0:
-                return new CardItemAnimator();
-            case 1:
-                return new CurlItemAnimator();
-            case 2:
-                return new FanItemAnimator();
-            case 3:
-                return new FlipItemAnimator();
-            case 4:
-                return new FlyItemAnimator();
-            case 5:
-                return new GrowItemAnimator();
-            case 6:
-                return new HelixItemAnimator();
-            case 7:
-                return new PaperCutItemAnimator();
-            case 8:
-                return new ReverseFlyItemAnimator();
-            case 9:
-                return new TwirlItemAnimator();
-            case 10:
-                return new WaveItemAnimator();
-            default:
-                return new CardItemAnimator();
-        }
-    }
+
 }
