@@ -1,4 +1,4 @@
-package com.tanglie1993.jazzylistview;
+package com.tanglie1993.jazzylistview.animator;
 
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;

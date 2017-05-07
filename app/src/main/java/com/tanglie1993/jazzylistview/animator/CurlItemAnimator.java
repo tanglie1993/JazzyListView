@@ -1,10 +1,7 @@
-package com.tanglie1993.jazzylistview;
+package com.tanglie1993.jazzylistview.animator;
 
-import android.animation.ObjectAnimator;
-import android.animation.ValueAnimator;
 import android.graphics.Matrix;
 import android.view.View;
-import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.Animation;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.Transformation;

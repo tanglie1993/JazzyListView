@@ -1,16 +1,15 @@
-package com.tanglie1993.jazzylistview;
+package com.tanglie1993.jazzylistview.animator;
 
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
-import android.view.animation.ScaleAnimation;
 
 /**
  * Created by Administrator on 2017/5/6 0006.
  */
 
-public class CardItemAnimator implements ListItemAnimator {
+public class FlyItemAnimator implements ListItemAnimator {
     @Override
     public void animateItem(final View view, final int direction) {
         if(view == null){
@@ -23,11 +22,12 @@ public class CardItemAnimator implements ListItemAnimator {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
                 float animatedValue = (Float) animation.getAnimatedValue();
-                int flag = direction == BELOW ? 1 : -1;
-                view.setRotationX((1 - animatedValue) * flag * 90);
-                view.setTranslationY((float) (view.getMeasuredHeight() * 0.3 * flag * (1 - animatedValue)));
-                view.setScaleX((float) (0.5 + 0.5 * animatedValue));
-                view.setScaleY((float) (0.5 + 0.5 * animatedValue));
+                view.setScaleX((float) (0.7 + 0.3 * animatedValue));
+                if(direction == BELOW){
+                    view.setRotationX(90 * (animatedValue - 1));
+                }else{
+                    view.setRotationX(90 * (1 - animatedValue));
+                }
             }
         });
         animation.start();

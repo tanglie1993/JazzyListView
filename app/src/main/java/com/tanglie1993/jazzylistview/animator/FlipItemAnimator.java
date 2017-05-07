@@ -1,4 +1,4 @@
-package com.tanglie1993.jazzylistview;
+package com.tanglie1993.jazzylistview.animator;
 
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
@@ -9,7 +9,7 @@ import android.view.animation.AccelerateDecelerateInterpolator;
  * Created by Administrator on 2017/5/6 0006.
  */
 
-public class FlyItemAnimator implements ListItemAnimator {
+public class FlipItemAnimator implements ListItemAnimator {
     @Override
     public void animateItem(final View view, final int direction) {
         if(view == null){
@@ -22,10 +22,11 @@ public class FlyItemAnimator implements ListItemAnimator {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
                 float animatedValue = (Float) animation.getAnimatedValue();
-                view.setScaleX((float) (0.7 + 0.3 * animatedValue));
                 if(direction == BELOW){
+                    view.setPivotY(0);
                     view.setRotationX(90 * (animatedValue - 1));
                 }else{
+                    view.setPivotY(view.getMeasuredHeight());
                     view.setRotationX(90 * (1 - animatedValue));
                 }
             }
