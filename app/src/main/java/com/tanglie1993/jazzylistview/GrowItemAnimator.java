@@ -16,7 +16,7 @@ public class GrowItemAnimator implements ListItemAnimator {
         }
         ScaleAnimation animation = new ScaleAnimation(0, 1, 0, 1,
                 view.getMeasuredWidth() / 2, view.getMeasuredHeight() / 2);
-        animation.setDuration(1000);
+        animation.setDuration(ANIMATION_DURATION);
         animation.setFillAfter(false);
         animation.setInterpolator(new AccelerateDecelerateInterpolator());
         view.startAnimation(animation);

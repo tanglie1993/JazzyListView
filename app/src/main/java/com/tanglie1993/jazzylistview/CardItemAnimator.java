@@ -17,7 +17,7 @@ public class CardItemAnimator implements ListItemAnimator {
             return;
         }
         ValueAnimator animation = ObjectAnimator.ofFloat(0, 1);
-        animation.setDuration(400);
+        animation.setDuration(ANIMATION_DURATION);
         animation.setInterpolator(new AccelerateDecelerateInterpolator());
         animation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
