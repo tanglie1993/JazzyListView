@@ -1,5 +1,6 @@
 package com.tanglie1993.jazzylistview;
 
+import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.ListViewCompat;
@@ -35,7 +36,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
                 View view = getLayoutInflater().inflate(R.layout.list_item_layout, parent, false);
-                ((TextView) view.findViewById(R.id.title)).setText("" + position);
+                ((TextView) view.findViewById(R.id.title)).setText(String.format("%d %d %d %d %d %d",
+                        position, position, position, position, position, position));
                 return view;
             }
         });

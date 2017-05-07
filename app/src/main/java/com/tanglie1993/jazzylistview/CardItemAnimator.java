@@ -26,6 +26,7 @@ public class CardItemAnimator implements ListItemAnimator {
                 view.setRotationX((1 - animatedValue) * 90);
                 view.setTranslationY((float) (view.getMeasuredHeight() * 0.3 * (1 - animatedValue)));
                 view.setScaleX((float) (0.5 + 0.5 * animatedValue));
+                view.setScaleY((float) (0.5 + 0.5 * animatedValue));
             }
         });
         animation.start();
